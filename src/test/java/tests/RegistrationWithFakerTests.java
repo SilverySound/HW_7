@@ -1,18 +1,13 @@
 package tests;
 
-import com.github.javafaker.Faker;
-import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-
-import java.util.Locale;
 
 import static utils.RandomUtils.*;
 
 
 public class RegistrationWithFakerTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
-    RandomUtils randomUtils = new RandomUtils();
 
     String firstName = getRandomFirstName();
     String lastName = getRandomLastName();
@@ -20,9 +15,12 @@ public class RegistrationWithFakerTests extends TestBase {
     String streetAddress = getRandomAddress();
     String gender = getRandomGender();
     String phone = getRandomPhone();
-    String month = getRandomMonth();
+    String day = getRandomDay();
+   String month = getRandomMonth();
+   String year= getRandomYear();
     String subject = getRandomSubject();
     String hobbies = getRandomHobbies();
+    String picture = getRandomPicture();
     String state = getRandomState();
     String city = getRandomCity(state);
 
@@ -41,7 +39,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setDateOfBirth(day, month, year)
                 .setSubjectInput(subject)
                 .setHobbiesWrapper(hobbies)
-                .setUploadPicture("images/1.png")
+                .setUploadPicture("images/" + picture)
                 .setCurrentAddress(streetAddress)
                 .setStateWrapper(state)
                 .setCityWrapper(city)
@@ -51,7 +49,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", phone)
-                .checkResult("Date of Birth", day + " " + month +" " + year)
+                .checkResult("Date of Birth", day + " " + month +"," + year)
                 .checkResult("Subjects", subject)
                 .checkResult("Hobbies", hobbies)
                 .checkResult("Address", streetAddress)
@@ -67,7 +65,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setUserNumber(phone)
                 .clickSubmit()
 
-                .checkResult("Student Name", firstName + lastName)
+                .checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Gender", gender)
                 .setUserNumber(phone);
 
@@ -77,7 +75,7 @@ public class RegistrationWithFakerTests extends TestBase {
     @Test
     void errorWithoutRequiredFirstName() {
         registrationPage.openPage();
-        registrationPage.setFirstName()
+        registrationPage.setFirstName("")
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
                 .setGender(gender)
@@ -85,13 +83,15 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setDateOfBirth(day, month, year)
                 .setSubjectInput(subject)
                 .setHobbiesWrapper(hobbies)
-                .setUploadPicture("images/1.png")
+                .setUploadPicture("images/" + picture)
                 .setCurrentAddress(streetAddress)
                 .setStateWrapper(state)
                 .setCityWrapper(city)
-                .clickSubmit()
+                .clickSubmit();
 
-                .checkEmptyFirstName();
+        registrationPage.checkEmptyFirstName();
+
+
 
     }
 }
