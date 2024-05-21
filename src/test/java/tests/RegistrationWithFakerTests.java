@@ -16,8 +16,8 @@ public class RegistrationWithFakerTests extends TestBase {
     String gender = getRandomGender();
     String phone = getRandomPhone();
     String day = getRandomDay();
-   String month = getRandomMonth();
-   String year= getRandomYear();
+    String month = getRandomMonth();
+    String year= getRandomYear();
     String subject = getRandomSubject();
     String hobbies = getRandomHobbies();
     String picture = getRandomPicture();
