@@ -1,5 +1,11 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -27,6 +33,11 @@ public class RegistrationWithFakerTests extends TestBase {
 
 
     @Test
+    @Tag("registration")
+    @Feature("Форма регистрации")
+    @Story("Заполнение формы")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Отправка формы со всеми заполненными полями")
     void successfulRegistrationTest() {
 
 
@@ -57,6 +68,11 @@ public class RegistrationWithFakerTests extends TestBase {
     }
 
     @Test
+    @Tag("registration")
+    @Feature("Форма регистрации")
+    @Story("Заполнение формы")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Отправка формы с обязательными заполненными полями")
     void minimumRequiredFields() {
         registrationPage.openPage();
         registrationPage.setFirstName(firstName)
@@ -73,6 +89,11 @@ public class RegistrationWithFakerTests extends TestBase {
     }
 
     @Test
+    @Tag("registration")
+    @Feature("Форма регистрации")
+    @Story("Заполнение формы")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Отправка формы без заполнения обязательного поля First Name")
     void errorWithoutRequiredFirstName() {
         registrationPage.openPage();
         registrationPage.setFirstName("")
