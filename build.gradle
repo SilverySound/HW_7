@@ -7,6 +7,9 @@ repositories {
     mavenCentral()
 }
 
+def allureVersion = "2.21.0",
+    selenideVersion = "6.19.1"
+
 allure {
     report {
         version.set("2.27.0") //версия Allure Report (https://github.com/allure-framework/allure2)
@@ -23,25 +26,21 @@ allure {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:6.19.1",
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'org.slf4j:slf4j-simple:2.0.7',
-            'com.github.javafaker:javafaker:1.0.2',
-            'io.qameta.allure:allure-selenide:2.27.0'
-
+            'com.github.javafaker:javafaker:1.0.2'
     )
 }
 
-tasks.withType(Test) {
-    systemProperties(System.getProperties())
-    useJUnitPlatform()
-
-    testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
+test {
+    options {
+        systemProperties(System.getProperties())
     }
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
+    useJUnitPlatform()
 }
 
 task registration_tests(type: Test) {

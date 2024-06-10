@@ -72,7 +72,7 @@ public class RegistrationWithFakerTests extends TestBase {
     @Feature("Форма регистрации")
     @Story("Заполнение формы")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Отправка формы с обязательными заполненными полями")
+    @DisplayName("Отправка формы с заполненными обязательными полями")
     void minimumRequiredFields() {
         registrationPage.openPage();
         registrationPage.setFirstName(firstName)
