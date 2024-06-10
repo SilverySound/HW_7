@@ -35,14 +35,16 @@ public class RegistrationPage {
     @Step("Открыть страницу регистрационной формы")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        removeBanner();
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-
-
-
-
         return this;
+    }
+
+    @Step("Удалить баннер")
+    public RegistrationPage removeBanner() {
+         executeJavaScript("$('#fixedban').remove()");
+         executeJavaScript("$('footer').remove()");
+         return this;
     }
 
     @Step("Ввести имя {value}")
