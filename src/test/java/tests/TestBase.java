@@ -21,10 +21,7 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000; // default 4000
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-    }
 
-    @BeforeEach
-    void beforeEach() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(
