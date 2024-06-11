@@ -67,7 +67,6 @@ public class RegistrationWithFakerTests extends TestBase {
                 .checkResult("Address", streetAddress)
                 .checkResult("State and City", state + " " + city);
 
-        registrationPage.removeBanner();
     }
 
     @Test
@@ -88,7 +87,6 @@ public class RegistrationWithFakerTests extends TestBase {
                 .checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Gender", gender)
                 .setUserNumber(phone);
-        registrationPage.removeBanner();
 
 
     }
@@ -117,7 +115,6 @@ public class RegistrationWithFakerTests extends TestBase {
                 .clickSubmit();
 
         registrationPage.checkEmptyFirstName();
-        registrationPage.removeBanner();
 
 
 
