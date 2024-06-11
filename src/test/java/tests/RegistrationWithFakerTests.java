@@ -42,6 +42,7 @@ public class RegistrationWithFakerTests extends TestBase {
 
 
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
