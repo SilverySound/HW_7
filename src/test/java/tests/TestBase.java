@@ -14,12 +14,14 @@ import java.util.Map;
 public class TestBase {
 
     @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
+    static void setupConfig() {
+
+        Configuration.browser = System.getProperty("browser");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 10000; // default 4000
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.remote = "https://user1:1234@" + System.getProperty("wdHost", "selenoid.autotests.cloud") + "/wd/hub";
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -29,7 +31,6 @@ public class TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
     }
-
     @AfterEach
     void afterEach() {
         Attach.screenshotAs("Last screenshot");
