@@ -14,14 +14,14 @@ import java.util.Map;
 public class TestBase {
 
     @BeforeAll
-    static void setupConfig() {
+    static void beforeAll() {
 
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-        Configuration.browserVersion = System.getProperty("browse_version", "121.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browserVersion = System.getProperty("browseVersion", "120.0");
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "https://user1:1234@" + System.getProperty("remote_url", "selenoid.autotests.cloud") + "/wd/hub";
+        Configuration.remote = System.getProperty("remote_url");
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
