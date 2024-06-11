@@ -35,7 +35,6 @@ public class RegistrationPage {
     @Step("Открыть страницу регистрационной формы")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        removeBanner();
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         return this;
     }
