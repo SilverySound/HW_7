@@ -53,6 +53,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setHobbiesWrapper(hobbies)
                 .setUploadPicture("images/" + picture)
                 .setCurrentAddress(streetAddress)
+                .removeBanner()
                 .setStateWrapper(state)
                 .setCityWrapper(city)
                 .clickSubmit()
@@ -82,6 +83,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setLastName(lastName)
                 .setGender(gender)
                 .setUserNumber(phone)
+                .removeBanner()
                 .clickSubmit()
 
                 .checkResult("Student Name", firstName + " " + lastName)
@@ -110,6 +112,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setHobbiesWrapper(hobbies)
                 .setUploadPicture("images/" + picture)
                 .setCurrentAddress(streetAddress)
+                .removeBanner()
                 .setStateWrapper(state)
                 .setCityWrapper(city)
                 .clickSubmit();
