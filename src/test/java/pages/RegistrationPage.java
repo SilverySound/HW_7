@@ -35,8 +35,8 @@ public class RegistrationPage {
     @Step("Открыть страницу регистрационной формы")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()"); 
+        executeJavaScript("$('footer').remove()");"
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         return this;
     }
