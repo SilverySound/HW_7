@@ -41,8 +41,8 @@ public class RegistrationWithFakerTests extends TestBase {
     void successfulRegistrationTest() {
 
 
-        registrationPage.openPage()
-                .removeBanner()
+        registrationPage.openPage();
+        registrationPage.removeBanner()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
@@ -76,6 +76,7 @@ public class RegistrationWithFakerTests extends TestBase {
     @DisplayName("Отправка формы с заполненными обязательными полями")
     void minimumRequiredFields() {
         registrationPage.openPage();
+        registrationPage.removeBanner();
         registrationPage.setFirstName(firstName)
                 .setLastName(lastName)
                 .setGender(gender)
@@ -97,6 +98,7 @@ public class RegistrationWithFakerTests extends TestBase {
     @DisplayName("Отправка формы без заполнения обязательного поля First Name")
     void errorWithoutRequiredFirstName() {
         registrationPage.openPage();
+        registrationPage.removeBanner();
         registrationPage.setFirstName("")
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
