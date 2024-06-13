@@ -43,6 +43,13 @@ test {
     useJUnitPlatform()
 }
 
+tasks.withType(Test) {
+    systemProperty 'browser', System.getProperty('browser')
+    systemProperty 'browserSize', System.getProperty('browserSize')
+    systemProperty 'browserVersion', System.getProperty('browserVersion')
+    systemProperty 'remoteUrl', System.getProperty('remoteUrl')
+}
+
 task registration_tests(type: Test) {
     useJUnitPlatform {
         includeTags("registration")
